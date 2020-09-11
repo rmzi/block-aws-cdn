@@ -1,4 +1,6 @@
 resource "aws_route53_record" "this" {
+  provider = aws.domain
+
   zone_id = data.terraform_remote_state.domain.outputs.zone_id
   name    = ""
   type    = "A"
@@ -11,6 +13,8 @@ resource "aws_route53_record" "this" {
 }
 
 resource "aws_route53_record" "www" {
+  provider = aws.domain
+
   count = var.enable_www ? 1 : 0
 
   zone_id = data.terraform_remote_state.domain.outputs.zone_id
