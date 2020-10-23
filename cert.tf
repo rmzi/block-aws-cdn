@@ -1,7 +1,7 @@
 resource "aws_acm_certificate" "this" {
   domain_name               = local.main_subdomain
   validation_method         = "DNS"
-  subject_alternative_names = local.alt_subdomains
+  subject_alternative_names = local.all_alt_subdomains
 
   tags = {
     Stack       = var.stack_name

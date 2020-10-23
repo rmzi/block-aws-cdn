@@ -48,5 +48,6 @@ locals {
   main_subdomain = data.terraform_remote_state.domain.outputs.name
   alt_subdomains = var.enable_www ? ["www.${local.main_subdomain}"] : []
   vanity_subdomains = var.vanity.enable ? ["${var.vanity.name}.${local.main_subdomain}"] : []
+  all_alt_subdomains =  compact(flatten([[local.alt_subdomains], local.vanity_subdomains])) 
   all_subdomains = flatten([[[local.main_subdomain], local.alt_subdomains], local.vanity_subdomains])
 }
