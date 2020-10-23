@@ -37,3 +37,10 @@ variable "enable_404page" {
   description = "Enable/Disable custom 404 page within s3 bucket. If enabled, must provide 404.html"
   default     = false
 }
+
+variable "vanity" {
+  type = object({
+    enable : bool,
+    name : string
+  })
+}
